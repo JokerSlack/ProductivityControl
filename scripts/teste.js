@@ -4,10 +4,11 @@ let tabUsage = {}; // Objeto para armazenar tempo por aba
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url) {
         console.log(`Acessou: ${tab.url}`);
-        tabUsage[tabId] = {
+        /* tabUsage[tabId] = {
             url: tab.url,
             startTime: Date.now()
-        };
+        };*/
+        // mandar para api no electron
     }
 });
 
@@ -19,6 +20,7 @@ chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
         console.log(`URL: ${tabData.url} foi fechada. Tempo gasto: ${duration / 1000}s`);
         
         // Enviar dados para o Electron ou salvar localmente
-        delete tabUsage[tabId]; // Limpar o registro da aba fechada
+        // delete tabUsage[tabId]; // Limpar o registro da aba fechada
+        // mandar para API no electron.
     }
 });
